@@ -6,7 +6,7 @@ resource "aws_athena_workgroup" "dotDB_Athena_Workgroup" {
     publish_cloudwatch_metrics_enabled = true
 
     result_configuration {
-      output_location = "s3://${aws_s3_bucket.dotsdb_athena_bucket.bucket}/results"
+      output_location = "s3://${module.dotsdb_athena_bucket.data.bucket}/results"
 
       ## TODO: Create custom key for Athena bucket
       #   encryption_configuration {

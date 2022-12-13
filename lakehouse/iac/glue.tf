@@ -16,7 +16,7 @@ resource "aws_iam_policy" "glue_crawler_target_policy" {
           "s3:PutObject"
         ]
         Effect   = "Allow"
-        Resource = "${aws_s3_bucket.dotsdb_iceberg_data.arn}/*"
+        Resource = "${module.dotsdb_data_bucket.data.arn}/*"
       },
       {
         Effect = "Allow",
@@ -79,6 +79,6 @@ resource "aws_glue_registry" "dotsdb_lake_glue_registry" {
 resource "aws_glue_catalog_database" "dotsdb_lake_glue_catalog_database" {
   name         = "dotsdb"
   description  = "dotsDB Iceberg Database"
-  location_uri = "s3://${aws_s3_bucket.dotsdb_iceberg_data.bucket}"
+  location_uri = "s3://${module.dotsdb_data_bucket.data.bucket}"
   catalog_id   = data.aws_caller_identity.current.account_id
 }

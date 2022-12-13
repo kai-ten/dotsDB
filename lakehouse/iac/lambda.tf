@@ -76,7 +76,7 @@ locals {
 }
 
 resource "aws_s3_object" "file_upload" {
-  bucket = "${aws_s3_bucket.dotsdb_iceberg_lambda.id}"
+  bucket = "${module.dotsdb_lambda_bucket.data.id}"
   key    = "lambda-functions/iceberg.zip"
   source = local.jar_file
   source_hash = filemd5("${local.jar_file}")

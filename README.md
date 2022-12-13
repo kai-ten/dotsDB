@@ -5,6 +5,5 @@ Currently focused on bulding an environment to share with others and to enable t
 
 <br />
 
-Check out an example of building your own Iceberg Data Lake in the `/lakehouse` dir. <br />
+Check out `/lakehouse` dir for an example of building your own Iceberg Data Lakehouse. <br />
 Blog to follow upon completion of basic functionality.
-
