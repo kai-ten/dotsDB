@@ -22,8 +22,9 @@ __Future goals may be:__
 - Support multiple catalogs
 - Support multiple clouds
 
+Check out [Matano](https://github.com/matanolabs/matano) if you're looking for a mature Iceberg project that is capable of providing business value!
+
 <br />
-<hr />
 <br />
 
 ## Getting Started
