@@ -1,9 +1,9 @@
-module "dotsdb_athena_bucket" {
+module "dotsdb_data_bucket" {
   source = "./modules/buckets"
   bucket_name = var.data_s3_bucket
 }
 
-module "dotsdb_data_bucket" {
+module "dotsdb_athena_bucket" {
   source = "./modules/buckets"
   bucket_name = var.athena_output_s3_bucket
 }

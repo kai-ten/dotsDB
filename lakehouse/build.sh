@@ -1,7 +1,7 @@
 #! /bin/sh
 
 # Build gradle app
-cd ./iceberg
+cd ./lib/iceberg
 ./gradlew uberJar
 cd -
 

@@ -72,14 +72,14 @@ resource "aws_iam_role_policy_attachment" "lambda_logs" {
 }
 
 locals {
-  jar_file = "./../iceberg/build/libs/iceberg-0.1-uber.jar"
+  jar_file = "./../lib/iceberg/build/libs/iceberg-0.1-uber.jar"
 }
 
 resource "aws_s3_object" "file_upload" {
   bucket = "${module.dotsdb_lambda_bucket.data.id}"
   key    = "lambda-functions/iceberg.zip"
   source = local.jar_file
-  source_hash = filemd5("${local.jar_file}")
+  source_hash = filebase64sha256("${local.jar_file}")
 }
 
 resource "aws_lambda_function" "dotsdb_iceberg_lambda" {

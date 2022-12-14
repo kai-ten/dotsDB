@@ -17,42 +17,49 @@ public class Handler {
         val namespace = Namespace.of("dotsdb") // TODO: add tf env var import
         val tableId = TableIdentifier.of(namespace, "books") // TODO: add tf env var if expanding beyond 1 table, would require loop and config
         val schema = Schema(
-            Types.NestedField.required(1, "marketplace", Types.StringType.get()),
-            Types.NestedField.required(2, "customer_id", Types.StringType.get()),
-            Types.NestedField.required(3, "review_id", Types.StringType.get()),
-            Types.NestedField.required(4, "product_id", Types.StringType.get()),
-            Types.NestedField.required(5, "product_parent", Types.StringType.get()),
-            Types.NestedField.required(6, "product_title", Types.StringType.get()),
-            Types.NestedField.required(7, "star_rating", Types.IntegerType.get()),
-            Types.NestedField.required(8, "helpful_votes", Types.IntegerType.get()),
-            Types.NestedField.required(9, "total_votes", Types.IntegerType.get()),
-            Types.NestedField.required(10, "vine", Types.StringType.get()),
-            Types.NestedField.required(11, "verified_purchase", Types.StringType.get()),
-            Types.NestedField.required(12, "review_headline", Types.StringType.get()),
-            Types.NestedField.required(13, "review_body", Types.StringType.get()),
-            Types.NestedField.required(14, "review_date", Types.DateType.get()),
-            Types.NestedField.required(15, "year", Types.IntegerType.get())
+            Types.NestedField.optional(1, "marketplace", Types.StringType.get()),
+            Types.NestedField.optional(2, "customer_id", Types.StringType.get()),
+            Types.NestedField.optional(3, "review_id", Types.StringType.get()),
+            Types.NestedField.optional(4, "product_id", Types.StringType.get()),
+            Types.NestedField.optional(5, "product_parent", Types.StringType.get()),
+            Types.NestedField.optional(6, "product_title", Types.StringType.get()),
+            Types.NestedField.optional(7, "star_rating", Types.IntegerType.get()),
+            Types.NestedField.optional(8, "helpful_votes", Types.IntegerType.get()),
+            Types.NestedField.optional(9, "total_votes", Types.IntegerType.get()),
+            Types.NestedField.optional(10, "vine", Types.StringType.get()),
+            Types.NestedField.optional(11, "verified_purchase", Types.StringType.get()),
+            Types.NestedField.optional(12, "review_headline", Types.StringType.get()),
+            Types.NestedField.optional(13, "review_body", Types.StringType.get()),
+            Types.NestedField.optional(14, "review_date", Types.DateType.get()),
+            Types.NestedField.optional(15, "year", Types.IntegerType.get())
         )
-        val spec = PartitionSpec.builderFor(schema)
-            .day("review_date")
-            .build()
+        // val spec = PartitionSpec.builderFor(schema)
+        //     .day("review_date")
+        //     .build()
+        val spec = PartitionSpec.unpartitioned()
 
+        
         // https://iceberg.apache.org/docs/latest/configuration/
+        // https://docs.aws.amazon.com/athena/latest/ug/querying-iceberg-creating-tables.html#querying-iceberg-table-properties 
         // Keep an eye on lz4 support for Athena (no avro support at time of writing - https://docs.aws.amazon.com/athena/latest/ug/compression-formats.html)
         val properties = mapOf(
             "write.format.default" to "parquet",
             "write.avro.compression-codec" to "snappy",
             "write.parquet.compression-codec" to "snappy",
-            "format-version" to "2" // https://iceberg.apache.org/spec/#format-versioning
+            "format-version" to "2", // https://iceberg.apache.org/spec/#format-versioning
+            "table_type" to "ICEBERG",
+            "format" to "parquet",
+            "write_compression" to "snappy"
         )
 
         if (!catalog.tableExists(tableId)) {
             catalog.createTable(tableId, schema, spec, properties)
-        } else if (!catalog.tableExists(tableId)) {
+        } else if (catalog.tableExists(tableId)) {
             // handle update
         } else {
             // handle delete
         }
+        println("Complete!")
     }
 }
 
@@ -73,7 +80,9 @@ class DotsDBGlueCatalog {
             "s3.dualstack-enabled" to "true",
             "write.object-storage.enabled" to "true",
             "write.data.path" to "s3://dotsdb-lakehouse-data/books", // TODO: add tf env var import
-            "s3.write.tags.owner" to "dotsDB"
+            "s3.write.tags.owner" to "dotsDB",
+            "fs.s3a.path.style.access" to "true"
         )
     }
 }
+
