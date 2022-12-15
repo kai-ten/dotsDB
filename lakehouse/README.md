@@ -5,6 +5,8 @@ The lakehouse folder contains the necessary code to spin up and tear down a data
 While this project will continue to receive updates, they will only be for a certain cause. <br />
 Please read the below to understand what I am currently going for versus what an ideal state may look like.
 
+Pair-programmed with [@dustbins](https://github.com/dustbins)
+
 <br />
 
 __Ideally, this Iceberg-based data lakehouse will:__
