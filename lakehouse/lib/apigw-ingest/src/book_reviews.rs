@@ -1,7 +1,10 @@
-// pub struct BookReview {
-//     pub marketplace: str,
-//     pub review_date: str
-// }
+use serde::{Deserialize, Serialize};
+
+#[derive(Deserialize, Serialize, Debug, Clone)]
+pub struct BookReview {
+    pub marketplace: String,
+    pub review_date: String
+}
 
 // Types.NestedField.optional(1, "marketplace", Types.StringType.get()),
 // Types.NestedField.optional(2, "customer_id", Types.StringType.get()),

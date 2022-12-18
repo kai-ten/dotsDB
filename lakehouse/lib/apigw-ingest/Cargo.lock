@@ -34,6 +34,8 @@ dependencies = [
  "lambda_runtime",
  "lazy_static",
  "log",
+ "serde",
+ "serde_json",
  "tokio",
  "tracing",
  "tracing-subscriber",
