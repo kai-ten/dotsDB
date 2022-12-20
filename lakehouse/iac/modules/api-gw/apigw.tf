@@ -19,7 +19,7 @@ resource "aws_apigatewayv2_integration" "dotsdb_ingest_integration" {
 
 resource "aws_apigatewayv2_route" "dotsdb_ingest_route" {
   api_id    = aws_apigatewayv2_api.dotsdb_apigw_api.id
-  route_key = "POST /books"
+  route_key = "POST /book-reviews"
 
   target = "integrations/${aws_apigatewayv2_integration.dotsdb_ingest_integration.id}"
 }

@@ -1,0 +1,57 @@
+{
+    "path": "/example/books",
+    "headers": {
+      "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+      "Accept-Encoding": "gzip, deflate, lzma, sdch, br",
+      "Accept-Language": "en-US,en;q=0.8",
+      "CloudFront-Forwarded-Proto": "https",
+      "CloudFront-Is-Desktop-Viewer": "true",
+      "CloudFront-Is-Mobile-Viewer": "false",
+      "CloudFront-Is-SmartTV-Viewer": "false",
+      "CloudFront-Is-Tablet-Viewer": "false",
+      "CloudFront-Viewer-Country": "US",
+      "Host": "example.com",
+      "Upgrade-Insecure-Requests": "1",
+      "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.82 Safari/537.36 OPR/39.0.2256.48",
+      "Via": "1.1 fb7cca60f0ecd82ce07790c9c5eef16c.cloudfront.net (CloudFront)",
+      "X-Amz-Cf-Id": "nBsWBOrSHMgnaROZJK1wGCZ9PcRcSpq_oSXZNQwQ10OTZL4cimZo3g==",
+      "X-Forwarded-For": "192.168.100.1, 192.168.1.1",
+      "X-Forwarded-Port": "443",
+      "X-Forwarded-Proto": "https"
+    },
+    "pathParameters": {
+      "proxy": "example"
+    },
+    "requestContext": {
+      "accountId": "123456789012",
+      "resourceId": "us4z18",
+      "stage": "test",
+      "requestId": "41b45ea3-70b5-11e6-b7bd-69b5aaebc7d9",
+      "requestTimeEpoch": 1583798639428,
+      "identity": {
+        "cognitoIdentityPoolId": "",
+        "accountId": "",
+        "cognitoIdentityId": "",
+        "caller": "",
+        "apiKey": "",
+        "sourceIp": "192.168.100.1",
+        "cognitoAuthenticationType": "",
+        "cognitoAuthenticationProvider": "",
+        "userArn": "",
+        "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.82 Safari/537.36 OPR/39.0.2256.48",
+        "user": ""
+      },
+      "resourcePath": "/books",
+      "httpMethod": "POST",
+      "apiId": "wt6mne2s9k"
+    },
+    "resource": "/books",
+    "httpMethod": "POST",
+    "body": "[\n    {\n        \"marketplace\": \"US\",\n        \"customer_id\": \"10822695\",\n        \"review_id\": \"R2RRIALQ1UBYO8\",\n        \"product_id\": \"0385418493\",\n        \"product_parent\": \"610658517\",\n        \"product_title\": \"How the Irish Saved Civilization: The Untold Story of Ireland's Heroic Role From the Fall of Rome to the Rise of Medieval Europe (The Hinges of History)\",\n        \"star_rating\": 1,\n        \"helpful_votes\": 153,\n        \"total_votes\": 169,\n        \"vine\": \"N\",\n        \"verified_purchase\": \"N\",\n        \"review_headline\": \"Total Rubbish.\",\n        \"review_body\": \"The last reviwer is a bit daft. In some 70 years of reading History I have never read such lies, distortions, and incoherent gibberish. The author is CLEARLY appealing to ethnic sentiment over \\\"EVIDENCE AND FACTS.\\\" I suggest readers read the dozen or so \\\"Most Helpful Reviews.\\\" Those reviewers were very in depth and know their SUBJECT.\",\n        \"review_date\": \"2006-06-11\",\n        \"year\": 2006\n    }\n]",
+    "queryStringParameters": {
+      "name": "me"
+    },
+    "stageVariables": {
+      "stageVarName": "stageVarValue"
+    }
+}

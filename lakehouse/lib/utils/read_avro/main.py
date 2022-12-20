@@ -1,4 +1,4 @@
-import pandas
+import pandas as pd
 import fastavro
 import json
 
@@ -10,7 +10,7 @@ def avro_df(file):
     with open(file, 'rb') as f:
         reader = fastavro.reader(f)
         records = [r for r in reader]
-        jsonObj = pandas.DataFrame.from_records(records).to_json()
+        jsonObj = pd.DataFrame.from_records(records).to_json()
 
         with open('./data/output.json', 'w+') as w:
             jsonObj = json.loads(jsonObj)
