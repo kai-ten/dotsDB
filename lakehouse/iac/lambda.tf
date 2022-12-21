@@ -198,10 +198,10 @@ resource "aws_lambda_function" "dotsdb_ingestion_lambda" {
   architectures    = ["arm64"]
   runtime          = "provided.al2"
 
-  # environment {
-  #   variables = {
-  #     # TODO: Add all env vars here for lambda
-  #     DOTSDB_DATA_BUCKET_NAME = var.data_s3_bucket
-  #   }
-  # }
+  environment {
+    variables = {
+      # TODO: Add all env vars here for lambda
+      DOTSDB_DATA_BUCKET = var.data_s3_bucket
+    }
+  }
 }
